@@ -5,8 +5,11 @@ import java.text.SimpleDateFormat;
 
 public class Main1 {
 
+    /**
+     * Returns array of DAY_OF_WEEK according to current startingDay
+     */
     private static int[] getDaysLoop(int startingDay) {
-        // Too lazy to code
+        // Too lazy to calculate, easier to hardcode
         int[] numbers1 = { 1, 2, 3, 4, 5, 6, 7 };
         int[] numbers2 = { 2, 3, 4, 5, 6, 7, 1 };
         int[] numbers3 = { 3, 4, 5, 6, 7, 1, 2 };
@@ -51,8 +54,7 @@ public class Main1 {
         System.out.println();
     }
 
-    public static void printCurrentYear() {
-
+    public static void printCurrentYear(int startingDayOfWeek) {
         var cur = Calendar.getInstance();
         cur.set(Calendar.MONTH, 0);
         cur.set(Calendar.DATE, 1);
@@ -62,16 +64,13 @@ public class Main1 {
 
         var currentYear = cur.get(Calendar.YEAR);
 
-        int currentMonth = -1;
-
-        var startingDayOfWeek = 2;
-
         while (cur.get(Calendar.YEAR) == currentYear) {
-            currentMonth = cur.get(Calendar.MONTH);
+            var currentMonth = cur.get(Calendar.MONTH);
 
             Main1.printMonthName(currentMonth);
             Main1.printDaysOfWeeks(startingDayOfWeek);
 
+            // Print spacers for previous days (if any)
             for (int i : Main1.getDaysLoop(startingDayOfWeek)) {
                 if (i == cur.get(Calendar.DAY_OF_WEEK)) {
                     break;
@@ -82,6 +81,9 @@ public class Main1 {
             while (cur.get(Calendar.MONTH) == currentMonth) {
                 var dayOfWeek = cur.get(Calendar.DAY_OF_WEEK);
                 var dayOfMonth = cur.get(Calendar.DAY_OF_MONTH);
+
+                // Print newline before writing date
+                // Skipping 1 day because we are already on new line
                 if (((dayOfWeek - 1) % 7) + 1 == startingDayOfWeek && dayOfMonth != 1) {
                     System.out.println("");
                 }
@@ -90,21 +92,15 @@ public class Main1 {
 
                 cur.add(Calendar.DATE, 1);
             }
-
+            // Ending line with dates
             System.out.println("");
-            // System.out.println("This will be printed");
-            // System.out.println(cur.get(Calendar.DAY_OF_WEEK));
 
-            // SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd
-            // HH:mm:ssZ");
-            // System.out.println(simpleDateFormat.format(cur.getTime()));
-
+            // A separator
+            System.out.println("");
         }
-        // cur.get(Calendar.DAY_OF_WEEK) // 1 is sunday
-
     }
 
     public static void main(String[] args) {
-        Main1.printCurrentYear();
+        Main1.printCurrentYear(1);
     }
 }
