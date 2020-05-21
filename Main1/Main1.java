@@ -101,6 +101,8 @@ public class Main1 {
     }
 
     public static void main(String[] args) {
-        Main1.printCurrentYear(1);
+        int startingDayOfWeek = args.length > 0 ? Integer.parseInt(args[0]) : 1;
+
+        Main1.printCurrentYear(startingDayOfWeek);
     }
 }
