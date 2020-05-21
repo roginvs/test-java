@@ -1,5 +1,7 @@
 package Main3;
 
+import Main3.Graph.*;
+
 public class Main3 {
     public static void main(String[] args) {
         var background = new Background("gray", "lolkek");

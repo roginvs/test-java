@@ -1,4 +1,4 @@
-package Main3;
+package Main3.Graph;
 
 public class Background extends Graph {
     private String color;
@@ -11,7 +11,7 @@ public class Background extends Graph {
     }
 
     @Override
-    String draw() {
+    public String draw() {
         return String.format("Фон: цвет=%s, текстура=%s", this.color, this.texture);
     }
 }

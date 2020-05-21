@@ -1,4 +1,4 @@
-package Main3;
+package Main3.Graph;
 
 public class Rectangle extends Point {
     protected String color;
@@ -13,7 +13,7 @@ public class Rectangle extends Point {
     }
 
     @Override
-    String draw() {
+    public String draw() {
         return String.format("Прямоугольник: x=%d, y=%d, ширина=%d, высота=%d, цвет=%s", this.x, this.y, this.width,
                 this.height, this.color);
     }
