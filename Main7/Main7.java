@@ -1,13 +1,10 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.URL;
 import java.util.concurrent.Executors;
 
 import com.sun.net.httpserver.*;
-// import com.sun.net.httpserver.HttpHandler;
 
 class MyHandler implements HttpHandler {
     @Override
@@ -39,7 +36,7 @@ class MyHandler implements HttpHandler {
         System.out.print(host);
         System.out.println(exchange.getRequestURI());
 
-        // Lol, http 
+        // Lol, http
         final var url = new URL("http://" + host + exchange.getRequestURI());
 
         final var connection = (HttpURLConnection) url.openConnection();
@@ -76,7 +73,7 @@ public class Main7 {
 
         s.createContext("/", new MyHandler());
         s.setExecutor(Executors.newFixedThreadPool(30));
-        
+
         s.start();
         System.out.println("Started");
 
