@@ -36,8 +36,8 @@ class MyHandler implements HttpHandler {
         System.out.print(host);
         System.out.println(exchange.getRequestURI());
 
-        // Lol, http
-        final var url = new URL("http://" + host + exchange.getRequestURI());
+        // Lol, https
+        final var url = new URL("https://" + host + exchange.getRequestURI());
 
         final var connection = (HttpURLConnection) url.openConnection();
 
@@ -68,7 +68,6 @@ class MyHandler implements HttpHandler {
 public class Main7 {
 
     public static void main(final String[] args) throws IOException {
-
         final var s = HttpServer.create(new InetSocketAddress(8080), 0);
 
         s.createContext("/", new MyHandler());
