@@ -1,7 +1,15 @@
 import graphics.*;
 
 public class Main5 {
-    private static void swapXY(Movable target) {
+
+    private static void swapXY(Movable target)
+            // Lol, sonarlint complains:
+            // Remove the declaration of thrown exception
+            // 'java.lang.NullPointerException' which is a runtime exception
+            throws NullPointerException {
+        if (target == null) {
+            throw new NullPointerException("Object is not created");
+        }
         int tempX = target.getX();
         int tempY = target.getY();
         System.out.format("Swapping x=%d y=%d... ", tempX, tempY);
@@ -39,10 +47,17 @@ public class Main5 {
         var window = new MyWindow(8, 9);
         window.moveTo(11, 12);
 
-        Movable[] myMovables = {window, circle, ellipse, rectangle};
+        Movable[] myMovables = { window, circle, ellipse, null, rectangle };
 
-        for (var target: myMovables) {
-            Main5.swapXY(target);
+        for (var target : myMovables) {
+            try {
+                Main5.swapXY(target);
+            } catch (NullPointerException ex) {
+                System.out.println("Error while swapping coordinates.");
+                ex.printStackTrace();
+            }
         }
+
+        System.out.println("Done!");
     }
 }
