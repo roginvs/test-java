@@ -2,4 +2,4 @@
 
 # CI
 
-Check [Github actions](actions) for details
+Check [Github actions](https://github.com/roginvs/test-java) for details
