@@ -6,8 +6,8 @@ public class Ellipse extends Rectangle {
     }
 
     @Override
-    public String draw() {
-        return String.format("Эллипс: x=%d, y=%d, ширина=%d, высота=%d, цвет=%s", this.x, this.y, this.width,
-                this.height, this.color);
+    public void draw() {
+        System.out.println(String.format("Эллипс: x=%d, y=%d, ширина=%d, высота=%d, цвет=%s", this.x, this.y, this.width,
+                this.height, this.color));
     }
 }

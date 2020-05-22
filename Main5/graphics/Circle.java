@@ -11,7 +11,7 @@ public class Circle extends Point {
     }
 
     @Override
-    public String draw() {
-        return String.format("Круг: x=%d, y=%d, радиус=%d, цвет=%s", this.x, this.y, this.radius, this.color);
+    public void draw() {
+        System.out.println( String.format("Круг: x=%d, y=%d, радиус=%d, цвет=%s", this.x, this.y, this.radius, this.color));
     }
 }

@@ -8,21 +8,26 @@ public class Main5 {
         var ellipse = new Ellipse(3, 4, 11, 12, "yellow");
         var rectangle = new Rectangle(7, 8, 13, 14, "blue");
 
-        System.out.println(background.draw());
-        System.out.println(point.draw());
+        background.draw();
+        point.draw();
 
-        System.out.println(circle.draw());
-        System.out.println(rectangle.draw());
-        System.out.println(ellipse.draw());
+        circle.draw();
+        rectangle.draw();
+        ellipse.draw();
 
         System.out.println("");
         System.out.println("Move rectangle");
         rectangle.move(5, 6);
-        System.out.println(rectangle.draw());
+        rectangle.draw();
 
         System.out.println("");
         System.out.println("MoveTo rectangle");
         rectangle.moveTo(15, 15);
-        System.out.println(rectangle.draw());
+        rectangle.draw();
+
+        System.out.println("");
+        System.out.println("Moving window");
+        var window = new MyWindow(8, 9);
+        window.moveTo(11, 12);
     }
 }

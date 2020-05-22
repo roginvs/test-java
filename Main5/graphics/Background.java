@@ -11,7 +11,7 @@ public class Background extends Graph {
     }
 
     @Override
-    public String draw() {
-        return String.format("Фон: цвет=%s, текстура=%s", this.color, this.texture);
+    public void draw() {
+        System.out.println(String.format("Фон: цвет=%s, текстура=%s", this.color, this.texture));
     }
 }
