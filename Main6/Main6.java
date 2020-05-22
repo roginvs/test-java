@@ -14,19 +14,21 @@ public class Main6 {
     private static String INPUT_FILENAME = "input.txt";
 
     private static void createSinFile() throws FileNotFoundException {
-        var pw = new PrintWriter(Main6.SIN_FILENAME);
-        for (int degree = 0; degree < 360; degree++) {
-            double rad = degree * Math.PI / 180;
-            pw.println(Math.sin(rad));
+        try (var pw = new PrintWriter(Main6.SIN_FILENAME)) {
+            for (int degree = 0; degree < 360; degree++) {
+                double rad = degree * Math.PI / 180;
+                pw.println(Math.sin(rad));
+            }
         }
-        pw.close();
+
     }
 
     private static void createInputFile() throws FileNotFoundException {
         int randomLineNumber = (int) (Math.floor(Math.random() * 360));
-        var pw = new PrintWriter(Main6.INPUT_FILENAME);
-        pw.println(randomLineNumber);
-        pw.close();
+        try (var pw = new PrintWriter(Main6.INPUT_FILENAME)) {
+            pw.println(randomLineNumber);
+        }
+
     }
 
     private static void readFiles() throws FileNotFoundException, IOException {
@@ -62,7 +64,6 @@ public class Main6 {
         try (var oos = new ObjectOutputStream(new FileOutputStream(SERIALIZE_FILE_NAME))) {
             oos.writeObject(values);
         }
-        
 
         System.out.println("Deserializing array");
 
@@ -70,7 +71,6 @@ public class Main6 {
         try (var oos = new ObjectInputStream(new FileInputStream(SERIALIZE_FILE_NAME))) {
             valuesReaded = (double[]) oos.readObject();
         }
-        
 
         System.out.println("Serializing one-by-one");
 
@@ -80,7 +80,7 @@ public class Main6 {
                 oos.writeObject(value);
             }
         }
-        
+
         System.out.println("Deserializing one-by-one");
 
         double[] valuesOneByOneReaded = new double[360];
@@ -89,18 +89,16 @@ public class Main6 {
                 valuesOneByOneReaded[i] = (double) oos.readObject();
             }
         }
-        
+
         System.out.println("Checking");
 
         if (valuesReaded.length != values.length) {
             throw new Error("Not equal length for array serialization");
         }
-        
 
         if (valuesOneByOneReaded.length != values.length) {
             throw new Error("Not equal length for one-by-one");
         }
-        
 
         for (int i = 0; i < 360; i++) {
             if (values[i] != valuesReaded[i]) {
