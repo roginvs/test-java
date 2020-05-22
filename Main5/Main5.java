@@ -1,6 +1,15 @@
 import graphics.*;
 
 public class Main5 {
+    private static void swapXY(Movable target) {
+        int tempX = target.getX();
+        int tempY = target.getY();
+        System.out.format("Swapping x=%d y=%d... ", tempX, tempY);
+        target.moveTo(tempY, tempX);
+        System.out.format("swapped x=%d y=%d", target.getX(), target.getY());
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         var background = new Background("gray", "lolkek");
         var point = new Point(5, 6);
@@ -29,5 +38,11 @@ public class Main5 {
         System.out.println("Moving window");
         var window = new MyWindow(8, 9);
         window.moveTo(11, 12);
+
+        Movable[] myMovables = {window, circle, ellipse, rectangle};
+
+        for (var target: myMovables) {
+            Main5.swapXY(target);
+        }
     }
 }
