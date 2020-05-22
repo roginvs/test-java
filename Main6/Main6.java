@@ -9,6 +9,20 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+class MyTestClass implements java.lang.AutoCloseable {
+    MyTestClass() {
+        System.out.println("Class is created");
+    }
+
+    public void close() {
+        System.out.println("Class is closed");
+    }
+
+    public void someError() {
+        throw new Error("A wild error appeared!");
+    }
+}
+
 public class Main6 {
     private static String SIN_FILENAME = "sin.txt";
     private static String INPUT_FILENAME = "input.txt";
@@ -113,6 +127,26 @@ public class Main6 {
 
     }
 
+    private static void testTryWithResource() {
+        System.out.println("");
+        System.out.println("Creating with try");
+        try (var c = new MyTestClass()) {
+            System.out.println("Do nothing");
+        };
+        System.out.println("Done with try");
+        
+        /*
+        System.out.println("");
+        System.out.println("Creating with try");
+        try (var c = new MyTestClass()) {
+            System.out.println("Will throw now");
+            c.someError();
+        };
+        System.out.println("Done with try");
+        */
+        
+    }
+
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         Main6.createSinFile();
         Main6.createInputFile();
@@ -120,5 +154,7 @@ public class Main6 {
         Main6.readFiles();
 
         Main6.serializeObjects();
+
+        Main6.testTryWithResource();
     }
 }
