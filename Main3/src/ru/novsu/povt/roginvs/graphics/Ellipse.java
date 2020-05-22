@@ -1,4 +1,4 @@
-package Main3.Graph;
+package ru.novsu.povt.roginvs.graphics;
 
 public class Ellipse extends Rectangle {
     public Ellipse(int x, int y, int width, int height, String color) {

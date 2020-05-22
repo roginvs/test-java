@@ -4,8 +4,8 @@ echo "Clean"
 rm -Rf out || true
 
 echo "Build"
-javac Graph/*.java *.java -d out
+javac src/ru/novsu/povt/roginvs/graphics/*.java src/ru/novsu/povt/roginvs/*.java -d out
 
 echo "Run"
 echo ""
-(cd out && java Main3.Main3)
+(cd out && java ru.novsu.povt.roginvs.Roginvs)

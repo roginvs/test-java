@@ -1,4 +1,4 @@
-package Main3.Graph;
+package ru.novsu.povt.roginvs.graphics;
 
 public class Background extends Graph {
     private String color;

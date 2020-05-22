@@ -1,8 +1,8 @@
-package Main3;
+package ru.novsu.povt.roginvs;
 
-import Main3.Graph.*;
+import ru.novsu.povt.roginvs.graphics.*;
 
-public class Main3 {
+public class Roginvs {
     public static void main(String[] args) {
         var background = new Background("gray", "lolkek");
         var point = new Point(5, 6);
