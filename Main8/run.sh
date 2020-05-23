@@ -16,6 +16,9 @@ mkdir -p out/WEB-INF
 echo "Copy libs"
 cp -vR lib out/WEB-INF/lib
 
+echo "Copy templates"
+cp -vR templates out/WEB-INF/templates
+
 echo "Copy static"
 cp -Rv static/* out/
 
