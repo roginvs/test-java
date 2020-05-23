@@ -20,5 +20,7 @@
             <div> 
           </c:forEach>
     </div>
+
+    <div><br><a href="/">back</a></div>
 </body>
 </html>
