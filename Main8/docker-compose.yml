@@ -1,0 +1,19 @@
+version: "3"
+services:
+    database:
+        image: mysql
+        ports: 
+            - "13306:3006"
+        environment: 
+            - MYSQL_ROOT_PASSWORD=asdasd
+            - MYSQL_DATABASE=test
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=password
+    tomcat:
+        image: tomcat
+        ports:
+            - "8888:8080"
+        volumes:
+            - "./out/war/ROOT.war:/usr/local/tomcat/webapps/ROOT.war:ro"
+        depends_on: 
+            - database

@@ -14,10 +14,10 @@ public class Add extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            String url = "jdbc:mysql://localhost/productdb?serverTimezone=Europe/Moscow&useSSL=false";
-            String username = "root";
-
+            String url = "jdbc:mysql://database/test?serverTimezone=Europe/Moscow&useSSL=false&allowPublicKeyRetrieval=true";
+            String username = "user";
             String password = "password";
+
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = DriverManager.getConnection(url, username, password)) {
 

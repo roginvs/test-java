@@ -37,5 +37,4 @@ echo "Pack"
 )
 
 echo "Run docker"
-docker run -it --rm --name tomcat -p 8888:8080 \
- -v $(pwd)/out/war/ROOT.war:/usr/local/tomcat/webapps/ROOT.war tomcat:9.0
+docker-compose up
