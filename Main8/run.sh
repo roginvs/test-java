@@ -1,7 +1,9 @@
 set -e
 
 echo "Clean"
-rm -Rf out || true
+if [ -d out ]; then
+  rm -Rf out
+fi
 
 echo "Create folders"
 mkdir -p out/WEB-INF
