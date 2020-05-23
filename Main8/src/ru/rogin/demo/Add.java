@@ -1,5 +1,9 @@
 package ru.rogin.demo;
 
-public class Add {
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class Add extends HttpServlet {
     
 }
