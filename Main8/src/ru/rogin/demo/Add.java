@@ -26,9 +26,12 @@ public class Add extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setAttribute("time", new Date()); // 'time' would be shown on JSP page
+        //      request.setAttribute("time", new Date()); // 'time' would be shown on JSP page
+   
+
         RequestDispatcher view = request.getRequestDispatcher("WEB-INF/templates/add.jsp");
         view.forward(request, response);
+        
         /*
          * try { String url =
          * "jdbc:mysql://database/test?serverTimezone=Europe/Moscow&useSSL=false&allowPublicKeyRetrieval=true";
@@ -43,5 +46,24 @@ public class Add extends HttpServlet {
          * } catch (Exception ex) { out.println("Connection failed...");
          * out.println(ex); } finally { out.close(); }
          */
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        try {
+            final var sql = "insert into users (name,password) values (?, ?)";
+            try (var db = Db.get().prepareStatement(sql)) {
+                db.setString(1, username);
+                db.setString(2, password);
+                db.executeUpdate();
+            }
+            response.setStatus(201);
+            response.sendRedirect("/list");
+        } catch (Exception ex) {
+            System.out.println(ex);
+            response.setStatus(500);
+        }
+        
     }
 }

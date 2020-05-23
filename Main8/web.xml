@@ -20,4 +20,17 @@
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
 
+
+
+    <servlet>
+        <servlet-name>ListServet</servlet-name>
+        <servlet-class>ru.rogin.demo.List</servlet-class>
+    </servlet>
+
+   <servlet-mapping>
+        <servlet-name>ListServet</servlet-name>
+        <url-pattern>/list</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
